@@ -1,0 +1,49 @@
+- create data base for sign up and login
+	=> https://dashboard.clerk.com/apps/app_3DyZE5RyiaTPcWbLZfbxBt1kCyg/instances/ins_3DyZE56Pd2gVfgwQegl8J9yrkMm
+
+	1 - src/middleware.ts
+		import { clerkMiddleware } from "@clerk/nextjs/server";
+		export default clerkMiddleware();
+		export const config = {
+			matcher: ["/((?!_next|[^?]*\\.(?:html|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest))).*", "/(api|trpc)(.*)"],
+		};
+
+	2 - app/layout.tsx
+		import { ClerkProvider } from "@clerk/nextjs";
+		<ClerkProvider>
+			<html> ... </html>
+		</ClerkProvider>
+
+	3 - app/sing-in/[[sing-in]]/page.tsx
+		import { SignIn } from "@clerk/nextjs";
+		export default function Page() {
+			return (
+				<div className="flex min-h-screen items-center justify-center">
+					<SignIn />
+				</div>
+			);
+		}
+	4 - app/sing-un/[[sing-un]]/page.tsx
+		import { SignUp } from "@clerk/nextjs";
+		export default function Page() {
+			return (
+				<div className="flex min-h-screen items-center justify-center">
+					<SignUp />
+				</div>
+			);
+		}
+
+	5 - env.local
+		=> https://dashboard.clerk.com/apps/app_3DyZE5RyiaTPcWbLZfbxBt1kCyg/instances/ins_3DyZE56Pd2gVfgwQegl8J9yrkMm/api-keys
+		NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+		NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+		NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+		NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+	
+		NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_ZXF1aXBwZWQtZXdlLTQyLmNsZXJrLmFjY291bnRzLmRldiQ
+		CLERK_SECRET_KEY=sk_test_t5qApnB0oHXoacmwrEq1oML4nvoPq2PUNhXbN8C9mt
+
+
+	6 - أسباب انخفاض أفضل الممارسات (Best Practices: 73)
+		- import { config, library } from "@fortawesome/fontawesome-svg-core";
+		- config.autoAddCss = false;

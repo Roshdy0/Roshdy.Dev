@@ -1,0 +1,76 @@
+/* --- FEATURES SECTION STYLING --- */
+.features-strip {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    .feature {
+        padding: 2rem;
+        border-radius: 24px;
+        background: var(--card);
+        border: 1px solid var(--border);
+
+        .feature-item {
+            gap: 1.5rem;
+            display: flex;
+            padding: 2rem;
+            overflow: hidden;
+            position: relative;
+            align-items: center;
+            border-radius: 24px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+            .icon-wrapper {
+                position: relative;
+                z-index: 1;
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba(168, 85, 247, 0.1);
+                border-radius: 16px;
+                color: var(--primary);
+                font-size: 1.8rem;
+                transition: all 0.3s ease;
+            }
+
+            .content {
+                z-index: 1;
+
+                h4 {
+                    font-size: 1.15rem;
+                    font-weight: 800;
+                    margin-bottom: 4px;
+                    color: var(--foreground);
+                }
+
+                p {
+                    font-size: 0.9rem;
+                    color: var(--foreground);
+                    opacity: 0.6;
+                    line-height: 1.4;
+                }
+            }
+
+            &:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+                border-color: var(--primary);
+
+                &::before {
+                    opacity: 1;
+                }
+
+                .icon-wrapper {
+                    background: var(--primary);
+                    color: #fff;
+                    transform: rotate(-10deg) scale(1.1);
+                    box-shadow: 0 10px 20px rgba(168, 85, 247, 0.3);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,177 @@
+.filter-sidebar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 50;
+	width: 18rem;
+	height: 100vh;
+	padding: 1.5rem;
+	transform: translateX(100%);
+	background-color: var(--card);
+	transition: transform 0.3s ease-in-out;
+	box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+	@media (min-width: 1024px) {
+		position: sticky;
+		transform: translateX(0);
+		height: calc(100vh - 2rem);
+		overflow-y: auto;
+	}
+
+	&.open {
+		transform: translateX(0);
+	}
+
+	.filter-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 2rem;
+
+		@media (min-width: 1024px) {
+			display: none;
+		}
+
+		.title {
+			font-size: 1.25rem;
+			font-weight: 700;
+			color: var(--card-foreground);
+		}
+
+		.close-btn {
+			color: var(--card-foreground);
+		}
+	}
+
+	.filter-group {
+		position: relative;
+		margin-bottom: 2rem;
+
+		.group-title {
+			font-weight: 600;
+			margin-bottom: 1rem;
+			color: var(--card-foreground);
+		}
+
+		.options-grid {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5rem;
+
+			.filter-option {
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
+				padding: 0.5rem;
+				border-radius: 0.25rem;
+				transition: all 0.2s;
+				color: var(--card-foreground);
+				background: transparent;
+				border: none;
+				cursor: pointer;
+
+				&:hover {
+					background-color: var(--border);
+				}
+
+				&.active {
+					background-color: var(--primary);
+					color: var(--primary-foreground);
+				}
+
+				.count {
+					font-size: 0.75rem;
+					opacity: 0.7;
+				}
+			}
+		}
+
+		button {
+			cursor: pointer;
+		}
+
+		.Dropdown {
+			position: absolute;
+			left: 0;
+			top: 100%;
+			z-index: 50;
+			padding: 1rem;
+			border-width: 1px;
+			margin-top: 0.5rem;
+			border-radius: 0.5rem;
+			background-color: #ffffff;
+			box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+			button {
+				display: block;
+				padding: 0.5rem;
+				width: 100%;
+				text-align: left;
+
+				&:hover {
+					background-color: #F3F4F6;
+				}
+
+			}
+		}
+
+		.sort-select {
+			width: 100%;
+			padding: 0.6rem;
+			border: 1px solid var(--border);
+			border-radius: 0.4rem;
+			background-color: var(--card);
+			color: var(--card-foreground);
+			cursor: pointer;
+			font-size: 0.9rem;
+
+			&:focus {
+				outline: 2px solid var(--primary);
+			}
+		}
+	}
+
+	.clear-btn {
+		width: 100%;
+		margin-top: auto;
+		padding: 0.5rem 0;
+		border: 1px solid var(--border);
+		border-radius: 0.25rem;
+		color: var(--card-foreground);
+		background: transparent;
+		cursor: pointer;
+		transition: all 0.2s;
+
+		&:hover {
+			background-color: var(--border);
+		}
+	}
+}
+
+.mobile-filter-toggle {
+	position: fixed;
+	bottom: 1.5rem;
+	right: 1.5rem;
+	z-index: 40;
+	padding: 1rem;
+	background-color: var(--primary);
+	color: var(--primary-foreground);
+	border-radius: 9999px;
+	border: none;
+	cursor: pointer;
+
+	@media (min-width: 1024px) {
+		display: none;
+	}
+}
+
+.filter-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 40;
+
+	@media (min-width: 1024px) {
+		display: none;
+	}
+}

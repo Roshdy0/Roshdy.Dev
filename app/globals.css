@@ -1,26 +1,224 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--card: #ffffff;
+	--ring: #a855f7;
+	--input: #e2e8f0;
+	--border: #e2e8f0;
+	--primary: #6d28d9;
+	--background: #f8fafc;
+	--foreground: #0f172a;
+	--card-foreground: #0f172a;
+	--primary-foreground: #ffffff;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+	--ring: #22c55e;
+	--input: #334155;
+	--card: #1e293b;
+	--border: #334155;
+	--primary: #22c55e;
+	--foreground: #f8fafc;
+	--background: #0f172a;
+	--card-foreground: #f8fafc;
+	--primary-foreground: #052e16;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	min-height: 100vh;
+	color: var(--foreground);
+	background-color: var(--background);
+	font-family: Arial, Helvetica, sans-serif;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.section-under-hero {
+	content-visibility: auto;
+	contain-intrinsic-size: 1000px;
+}
+
+.skeleton-loader {
+	width: 100%;
+	background-color: #e5e7eb;
+	border-radius: 0.5rem;
+	min-height: 200px;
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.section-title {
+	text-align: center;
+	margin: 0 0 20px 0;
+
+	h2 {
+		font-weight: 900;
+		font-size: 2.5rem;
+		position: relative;
+		margin-bottom: 3rem;
+		margin-bottom: 1rem;
+		line-height: 2.25rem;
+		display: inline-block;
+
+		span {
+			position: relative;
+			color: var(--primary);
+		}
+	}
+
+	p {
+		opacity: 0.6;
+	}
+}
+
+.product-card {
+	text-align: center;
+	transition: transform .3s;
+	background: var(--card);
+	border: 1px solid var(--border);
+
+	&:hover {
+		transform: translateY(-5px);
+	}
+
+	.image-container {
+		aspect-ratio: 1;
+		position: relative;
+	}
+
+	.product-info {
+		.price-row {
+			display: flex;
+			justify-content: center;
+			gap: 10px;
+			align-items: center;
+			margin-bottom: 0.5rem;
+
+			.current-price {
+				color: #e11d48;
+				font-weight: 700;
+				font-size: 1.1rem;
+			}
+
+			.old-price {
+				color: #6b7280;
+				font-size: 0.9rem;
+				text-decoration: line-through;
+			}
+		}
+
+		.rating {
+			color: #fbbf24;
+			font-size: 0.8rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.card-actions {
+		display: flex;
+		border-top: 1px solid var(--border);
+		align-items: center;
+
+		.action-btn {
+			flex: 1;
+			padding: 1rem;
+			border: none;
+			background: none;
+			cursor: pointer;
+			transition: 0.3s;
+			color: #94a3b8;
+
+			&:hover {
+				color: var(--primary);
+				filter: brightness(1.2);
+				transform: translateY(-2px);
+			}
+
+			&.add-to-cart {
+				border-left: 1px solid var(--border);
+				border-right: 1px solid var(--border);
+				font-weight: 700;
+				font-size: 0.8rem;
+				color: var(--primary);
+				flex: 2;
+			}
+
+			&.added-animation {
+				transform: scale(0.95) !important;
+			}
+
+			&.favorite-btn {
+				transition: color 0.3s ease, transform 0.2s ease;
+
+				&.active {
+					color: #e11d48;
+				}
+
+				&:hover {
+					color: #e11d48;
+				}
+
+				&.heart-pop {
+					animation: heartBeat 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+				}
+
+				@keyframes heartBeat {
+					0% {
+						transform: scale(1);
+					}
+
+					50% {
+						transform: scale(1.4);
+					}
+
+					100% {
+						transform: scale(1);
+					}
+				}
+			}
+
+		}
+	}
+
+	.swiper-button-next, .swiper-button-prev {
+		color: var(--primary) !important;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: var(--primary) !important;
+	}
+}
+
+.Button-Shop {
+	display: flex;
+	margin: 10px auto;
+	font-weight: bold;
+	padding: 10px 20px;
+	border-radius: 8px;
+	color: var(--card);
+	width: fit-content;
+	align-items: center;
+	letter-spacing: 1px;
+	justify-content: center;
+	background-color: var(--primary);
+	transition: background-color 0.3s ease, transform 0.2s ease;
+
+	&:hover {
+		background-color: darken(var(--primary), 10%);
+		transform: translateY(-2px);
+	}
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+@keyframes pulse {
+	0%, 100% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: .5;
+	}
 }

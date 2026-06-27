@@ -1,0 +1,146 @@
+.hero-section {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+
+	.hero-swiper {
+		width: 100%;
+		height: 75vh;
+		min-height: 550px;
+	}
+
+	.slide-container {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		text-align: right;
+	}
+
+	.slide-image-wrapper {
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+
+		.hero-bg-img {
+			object-fit: cover;
+			object-position: center;
+		}
+
+		.slide-overlay {
+			position: absolute;
+			inset: 0;
+		}
+	}
+
+	/* كتلة النصوص والأزرار داخل السلايدر */
+	.slide-content {
+		position: relative;
+		z-index: 2;
+		max-width: 650px;
+		padding: 0 24px;
+		display: flex;
+		flex-direction: column;
+		gap: 18px;
+
+		.slide-badge {
+			align-self: flex-start;
+			background-color: var(--primary);
+			color: var(--primary-foreground);
+			padding: 6px 16px;
+			border-radius: 50px;
+			font-size: 13px;
+			font-weight: 700;
+		}
+
+		.slide-title {
+			font-size: 52px;
+			font-weight: 800;
+			color: #ffffff;
+			line-height: 1.2;
+		}
+
+		.slide-subtitle {
+			font-size: 18px;
+			color: #e2e8f0;
+			line-height: 1.6;
+		}
+
+		.slide-actions {
+			margin-top: 10px;
+
+			.hero-btn {
+				display: block;
+				width: 100%;
+				text-align: center;
+				background-color: var(--primary);
+				color: var(--primary-foreground);
+				padding: 12px;
+				border-radius: 8px;
+				font-weight: 600;
+				margin-top: 15px;
+				transition: opacity 0.2s ease;
+				text-decoration: none;
+
+				&:hover {
+					opacity: 0.9;
+				}
+			}
+		}
+	}
+
+	.swiper-button-next,
+	.swiper-button-prev {
+		color: var(--primary) !important;
+		transition: transform 0.2s ease;
+
+		&:hover {
+			transform: scale(1.15);
+		}
+	}
+
+	.swiper-pagination-bullet {
+		background: var(--foreground) !important;
+	}
+
+	.swiper-pagination-bullet-active {
+		background: var(--primary) !important;
+		width: 26px !important;
+		border-radius: 4px !important;
+	}
+}
+
+@media (max-width: 768px) {
+	.hero-section {
+		.hero-swiper {
+			height: 60vh;
+		}
+
+		.slide-content {
+			max-width: 100%;
+			text-align: center;
+			align-items: center;
+
+			.slide-badge {
+				align-self: center;
+			}
+
+			.slide-title {
+				font-size: 34px;
+			}
+
+			.slide-subtitle {
+				font-size: 15px;
+			}
+		}
+
+		.slide-image-wrapper {
+			.slide-overlay {
+				/* تغطية داكنة متوازنة على الشاشات الصغيرة لضمان تباين النصوص */
+				background: rgba(15, 23, 42, 0.75);
+			}
+		}
+	}
+}
